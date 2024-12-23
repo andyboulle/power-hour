@@ -1,5 +1,5 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PlaylistRow({ id, name, total, images, owner }) {
     const navigate = useNavigate()
@@ -9,21 +9,26 @@ export default function PlaylistRow({ id, name, total, images, owner }) {
     }
 
     return (
-        <li key={id} onClick={selectPlaylist}>
-            <ul>
-                <li key={`name${id}`}>
-                    {name}
-                </li>
-                <li key={`owner${id}`}>
-                    {owner}
-                </li>
-                <li key={`total${id}`}>
-                    {total}
-                </li>
-                <li key={`images${id}`}>
-                    {images && <img src={images[0].url}></img>}
-                </li>
-            </ul>
+        <li 
+            key={id} 
+            className="list-group-item d-flex justify-content-between align-items-center"
+            onClick={selectPlaylist}
+            style={{ cursor: 'pointer' }}
+        >
+            <div className="row w-100">
+                <div className="col-2">
+                {images !== null && <img src={images[0]?.url} alt={name} style={{ width: '50px', height: '50px' }} />}
+                </div>
+                <div className="col-4">
+                    <span>{name}</span>
+                </div>
+                <div className="col-3">
+                    <span>{owner}</span>
+                </div>
+                <div className="col-3">
+                    <span>{total}</span>
+                </div>
+            </div>
         </li>
     )
 }

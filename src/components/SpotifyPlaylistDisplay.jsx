@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react"
 import PlaylistRow from "./PlaylistRow"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SpotifyPlaylistDisplay({ title, playlists, getSearchResults }) {
     let [searchItem, setSearchItem] = useState('')
 
     return (
-        <>
-            <h1>{title}</h1>
-            <input 
-                type="text" 
-                placeholder="Search playlists" 
-                value={searchItem}
-                onChange={e => {
-                    setSearchItem(e.target.value)
-                }}
-            >
-            </input>
-            <button onClick={() => getSearchResults(searchItem)}>Search</button>
-            <ul>
-                {playlists.length === 0 && 'No Playlists'}
+        <div className="card p-4">
+            <h2 className="text-center">{title}</h2>
+            <form className="mb-3 d-flex">
+                <input 
+                    type="text" 
+                    className="form-control me-2"
+                    placeholder="Search playlists" 
+                    value={searchItem}
+                    onChange={e => setSearchItem(e.target.value)}
+                />
+                <button className="btn btn-primary" type="button" onClick={() => getSearchResults(searchItem)}>Search</button>
+            </form>
+            <ul className="list-group" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
+                <li className="list-group-item d-flex justify-content-between">
+                    <div className="row w-100">
+                        <div className="col-2">Image</div>
+                        <div className="col-4">Name</div>
+                        <div className="col-3">Owner</div>
+                        <div className="col-3"># of Songs</div>
+                    </div>
+                </li>
+                {playlists.length === 0 && <li className="list-group-item">No Playlists</li>}
                 {playlists.map(playlist => {
                     if (playlist !== null) {
                         return (
@@ -34,6 +43,6 @@ export default function SpotifyPlaylistDisplay({ title, playlists, getSearchResu
                     }
                 })}
             </ul>
-        </>
+        </div>
     )
 }

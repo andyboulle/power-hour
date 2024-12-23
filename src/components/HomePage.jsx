@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function HomePage() {
     let [instructionsVisible, setInstructionsVisible] = useState(false)
@@ -60,23 +61,25 @@ export function HomePage() {
     }
 
     return (
-        <>
-            <h1>Power Hour</h1>
-            <i className="fa-solid fa-beer-mug-empty"></i>
-            <button onClick={requestUserAuthorization}>
-                Log In with Spotify
-            </button>
-            <button onClick={toggleInstructions}>
-                {instructionsVisible ? 'Hide Instructions' : 'Show Instructions'}
-            </button>
-            {instructionsVisible &&
-                <p>
-                    Power Hour is a drinking game that involves taking a shot of beer every minute for an hour. 
-                    This game is typically played with music that switches every minute to let the players know it is time to drink. 
-                    This app allows you to connect to your spotify playlists and use those songs as your power hour songs.
-                    Once you have logged in, you can select a playlist, select what songs you want to use, and the app will play a new one of these songs every minute for an hour.
-                </p>
-            }
-        </>
+        <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
+            <h1 className="text-center">Power Hour</h1>
+            <i className="fa-solid fa-beer-mug-empty fa-3x mb-4"></i>
+            <div className="card p-4 text-center" style={{ width: '300px' }}>
+                <button className="btn btn-primary mb-2" onClick={requestUserAuthorization}>
+                    Log In with Spotify
+                </button>
+                <button className="btn btn-secondary mb-2" onClick={toggleInstructions}>
+                    {instructionsVisible ? 'Hide Instructions' : 'Show Instructions'}
+                </button>
+                {instructionsVisible &&
+                    <p className="mt-3">
+                        Power Hour is a drinking game that involves taking a shot of beer every minute for an hour. 
+                        This game is typically played with music that switches every minute to let the players know it is time to drink. 
+                        This app allows you to connect to your spotify playlists and use those songs as your power hour songs.
+                        Once you have logged in, you can select a playlist, select what songs you want to use, and the app will play a new one of these songs every minute for an hour.
+                    </p>
+                }
+            </div>
+        </div>
     )
 }

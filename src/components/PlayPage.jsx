@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PlayPage() {
     const { state } = useLocation()
@@ -63,16 +64,30 @@ export default function PlayPage() {
     }
 
     return (
-        <>
-            <h1>Power Hour</h1>
-            <h1>{state.playlistInfo.playlistName}</h1>
-            <h3>{state.playlistInfo.playlistOwner}</h3>   
-            {state.playlistInfo.playlistImages && <img src={state.playlistInfo.playlistImages[0].url}></img>}
-            <h4>Minutes: {minute}/60</h4>
-            <h4>Timer: {timer}</h4>
-            <h4>Current Song: {currentSong.track.name}</h4>
-            <h4>by: {currentSong.track.artists.map(artist => artist.name).join(', ')}</h4>
-            {currentSong.track.album.images && <img src={currentSong.track.album.images[1].url}></img>}
-        </>
+        <div className="container">
+            <h1 className="text-center my-4">Power Hour</h1>
+            <div className="d-flex align-items-center mb-4">
+                {state.playlistInfo.playlistImages && <img src={state.playlistInfo.playlistImages[0].url} alt="Playlist" className="me-3" style={{ width: '100px', height: '100px' }} />}
+                <div>
+                    <h2>{state.playlistInfo.playlistName}</h2>
+                    <h4>{state.playlistInfo.playlistOwner}</h4>
+                </div>
+            </div>
+            <div className="card p-4">
+                <div className="d-flex justify-content-between mb-4">
+                    <div>
+                        <h4>Timer: {timer}</h4>
+                    </div>
+                    <div>
+                        <h4>Minutes: {minute}/60</h4>
+                    </div>
+                </div>
+                <div className="text-center">
+                    {currentSong.track.album.images && <img src={currentSong.track.album.images[1].url} alt="Current Song" className="mb-3" style={{ width: '200px', height: '200px' }} />}
+                    <h3>{currentSong.track.name}</h3>
+                    <h5>by: {currentSong.track.artists.map(artist => artist.name).join(', ')}</h5>
+                </div>
+            </div>
+        </div>
     )
 }

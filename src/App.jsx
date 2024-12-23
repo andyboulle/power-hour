@@ -1,6 +1,6 @@
-import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { HomePage } from "./components/HomePage";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SelectPlaylistPage from "./components/SelectPlaylistPage";
 import SelectSongsPage from "./components/SelectSongsPage";
 import PlayPage from "./components/PlayPage";

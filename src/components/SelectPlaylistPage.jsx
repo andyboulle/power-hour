@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import YourPlaylistDisplay from "./YourPlaylistDisplay"
 import SpotifyPlaylistDisplay from "./SpotifyPlaylistDisplay"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SelectPlaylistPage() {
     let [redirectHandled, setRedirectHandled] = useState(false)
@@ -128,6 +129,7 @@ export default function SelectPlaylistPage() {
 
             if (response.ok) {
                 console.log('Spotify playlists retrieved successfully')
+                console.log(data.playlists.items)
                 setSpotifysPlaylists([...data.playlists.items])
             } else {
                 console.error('Error retrieving spotify playlists', response)
@@ -138,10 +140,16 @@ export default function SelectPlaylistPage() {
     }
 
     return (
-        <>
-            <h1>Select Playlist</h1>
-            <YourPlaylistDisplay title="Your Playlists" playlists={yourPlaylists} />
-            <SpotifyPlaylistDisplay title="Spotify's Playlists" playlists={spotifysPlaylists} getSearchResults={getSpotifyPlaylists}/>
-        </>
+        <div className="container">
+            <h1 className="text-center my-4">Select Playlist</h1>
+            <div className="row">
+                <div className="col-md-6">
+                    <YourPlaylistDisplay title="Your Playlists" playlists={yourPlaylists} />
+                </div>
+                <div className="col-md-6">
+                    <SpotifyPlaylistDisplay title="Spotify's Playlists" playlists={spotifysPlaylists} getSearchResults={getSpotifyPlaylists} />
+                </div>
+            </div>
+        </div>
     )
 }
