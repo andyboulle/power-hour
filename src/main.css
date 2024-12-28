@@ -1,17 +1,17 @@
 /* ALL PAGES */
 
 body {
-    background-color: #2C363F;
+    background-color: #545677;
 }
 
 h1, h2, h4, p, i {
-    color: #F1BB87;
+    color: #DED9E2;
 }
 
 /* HOME PAGE */
 
 #home-button-holder {
-    background-color: #F1BB87;
+    background-color: #DED9E2;
 }
 
 #spotify-login-button {
@@ -25,20 +25,20 @@ h1, h2, h4, p, i {
 }
 
 #home-button-holder p {
-    color: #2C363F;
+    color: #545677;
 }
 
 /* SELECT PLAYLIST PAGE */
 
 #your-playlist-box {
-    background-color: #2C363F;
-    color: #F1BB87;
+    background-color: #545677;
+    color: #DED9E2;
     border: 1px solid white;
 }
 
 #spotifys-playlist-box {
-    background-color: #2C363F;
-    color: #F1BB87;
+    background-color: #545677;
+    color: #DED9E2;
     border: 1px solid white;
 }
 
@@ -53,15 +53,15 @@ h1, h2, h4, p, i {
 }
 
 .list-group-item {
-    background-color: #F1BB87;
-    color: #2C363F;
-    border: 1px solid #2C363F;
+    background-color: #DED9E2;
+    color: #545677;
+    border: 1px solid #545677;
     padding: 10px 15px;
     transition: background-color 0.3s ease;
 }
 
 .list-group-item:hover {
-    background-color: #E0A96D;
+    background-color: #c8c3cb;
 }
 
 .list-group-item img {
@@ -75,12 +75,12 @@ h1, h2, h4, p, i {
 /* SELECT SONGS PAGE */
 
 #select-songs-box {
-    background-color: #2C363F;
+    background-color: #545677;
     border: 1px solid white;
 }
 
 #songs-box {
-    background-color: #2C363F;
+    background-color: #545677;
     border: none;
 }
 
@@ -89,15 +89,15 @@ h1, h2, h4, p, i {
 }
 
 tr {
-    background-color: #F1BB87;
-    color: #2C363F;
-    border: 1px solid #2C363F;
+    background-color: #DED9E2;
+    color: #545677;
+    border: 1px solid #545677;
     padding: 10px 15px;
     transition: background-color 0.3s ease;
 }
 
 tr:hover {
-    background-color: #E0A96D;
+    background-color: #c8c3cb;
 }
 
 tr img {
@@ -105,23 +105,24 @@ tr img {
 }
 
 .table-hover tbody tr:hover {
-    background-color: #E0A96D;
+    background-color: #c8c3cb;
 }
 
 .table thead th {
-    background-color: #F1BB87;
-    color: #2C363F;
-    border-bottom: 2px solid #2C363F;
+    background-color: #DED9E2;
+    color: #545677;
+    border-bottom: 2px solid #545677;
 }
 
 .table tbody td {
-    border-top: 1px solid #2C363F;
-    background-color: #F1BB87;
+    border-top: 1px solid #545677;
+    background-color: #DED9E2;
+    color: #545677;
 }
 
 #devices-box {
-    background-color: #F1BB87;
-    color: #2C363F;
+    background-color: #DED9E2;
+    color: #545677;
 }
 
 #start-button {
@@ -137,8 +138,8 @@ tr img {
 /* PLAY PAGE */
 
 #play-box {
-    background-color: #2C363F;
-    color: #F1BB87;
+    background-color: #545677;
+    color: #DED9E2;
     border: 1px solid white;
 }
 
@@ -148,11 +149,11 @@ tr img {
 }
 
 #navigate-buttons button {
-    background-color: #F1BB87;
-    color: #2C363F;
+    background-color: #DED9E2;
+    color: #545677;
 }
 
 #navigate-buttons button:hover {
-    background-color: #E0A96D;
+    background-color: #c8c3cb;
     color: white;
 }
