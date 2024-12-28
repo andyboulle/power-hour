@@ -28,11 +28,11 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     npm install
     ```
-4. In `.env`, set `CLIENT_ID` to the client ID that was created in the prerequisites for the Spotify API
+4. In `.env`, set `REACT_APP_SPOTIFY_CLIENT_ID` to the client ID that was created in the prerequisites for the Spotify API
     
     Example:
     ```bash
-    CLIENT_ID="dsvbhibio236712tbd1383tg1wiub"
+    REACT_APP_SPOTIFY_CLIENT_ID="INSERT CLIENT ID"
     ```
 
 ### Execution
