@@ -18,7 +18,14 @@ export default function SelectPlaylistPage() {
 
     // Check if the user has been redirected from the Spotify login page
     useEffect(() => {
-        getUserPlaylists()
+        if (!redirectHandled) {
+            handleRedirect().then(() => {
+                getUserPlaylists()
+                setRedirectHandled(true)
+            })
+        } else {
+            getUserPlaylists()
+        }
     }, [redirectHandled])
 
     // Handle redirect from the Spotify login page
