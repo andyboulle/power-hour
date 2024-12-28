@@ -8,6 +8,7 @@ export function HomePage() {
         setInstructionsVisible(!instructionsVisible)
     }
 
+    // Handle user authentication through Spotify
     async function requestUserAuthorization() {
 
         // Get Code Verifier

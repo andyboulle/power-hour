@@ -7,23 +7,27 @@ export default function PlayPage() {
     const songs = state.songs
     const device = state.device
     const navigate = useNavigate()
+    const intervalRef = useRef(null)
+
     let [minute, setMinute] = useState(1)
     let [timer, setTimer] = useState(60)
     let [currentSong, setCurrentSong] = useState(songs[minute])
     let [isPlaying, setIsPlaying] = useState(true)
-    const intervalRef = useRef(null)
 
+    // Set the current song to the song at the current minute
     useEffect(() => {
         setCurrentSong(songs[minute])
     }, [minute])
 
+    // Play the new current song when the current song changes
     useEffect(() => {
         playSong(currentSong, (60 - timer) * 1000)
     }, [currentSong])
 
+    // Start/pause the timer when the song is played/paused
     useEffect(() => {
         if (isPlaying) {
-            intervalRef.current = setInterval(() => {
+            intervalRef.current = setInterval(() => { // Decrement the timer every second
                 setTimer(prevTimer => {
                     if (prevTimer === 1) {
                         setMinute(prevMinute => prevMinute + 1)
@@ -32,13 +36,14 @@ export default function PlayPage() {
                     return prevTimer - 1
                 })
             }, 1000)
-        } else if (intervalRef.current) {
+        } else if (intervalRef.current) { // Pause the timer when the song is paused
             clearInterval(intervalRef.current)
         }
 
         return () => clearInterval(intervalRef.current)
     }, [isPlaying])
 
+    // Play the song at the given time into the song using the Spotify API
     async function playSong(song, msIntoSong = 0) {
         const accessToken = localStorage.getItem('access_token')
 
@@ -70,6 +75,7 @@ export default function PlayPage() {
         }
     }
 
+    // Pause the song using the Spotify API
     function pauseSong() {
         const accessToken = localStorage.getItem('access_token')
 
@@ -93,6 +99,7 @@ export default function PlayPage() {
             .catch(err => console.error('Error sending request to pause song: ', err))
     }
 
+    // Pause or play the song depending on the current state
     function pauseOrPlaySong() {
         if (isPlaying) {
             pauseSong()

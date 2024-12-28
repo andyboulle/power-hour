@@ -10,7 +10,7 @@ export default function SelectSongsPage() {
     let [songs, setSongs] = useState([])
     let [checkedSongs, setCheckedSongs] = useState([])
     let [deviceSelected, setDeviceSelected] = useState(null)
-    let [deviceWarningVisible, setDeviceWarningVisible] = useState(false)
+    let [deviceWarningVisible, setDeviceWarningVisible] = useState(true)
 
     useEffect(() => {
         getSongsFromPlaylist()

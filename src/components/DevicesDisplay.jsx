@@ -4,10 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function DevicesDisplay({ handleDeviceSelection, handleStartPowerHour, deviceWarningVisible }) {
     let [availableDevices, setAvailableDevices] = useState([])
 
+    // Get list of available devices when component mounts
     useEffect(() => {
         getAvailableDevices()
     }, [])
 
+    // Get list of available devices from Spotify API
     async function getAvailableDevices() {
         const accessToken = localStorage.getItem('access_token')
         let devices = []

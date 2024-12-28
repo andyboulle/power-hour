@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function SpotifyPlaylistDisplay({ title, playlists, getSearchResults }) {
     let [searchItem, setSearchItem] = useState('')
 
+    // Handle searching for an item
     const handleSubmit = (e) => {
         e.preventDefault()
         getSearchResults(searchItem)

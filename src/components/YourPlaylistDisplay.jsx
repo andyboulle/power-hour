@@ -6,6 +6,7 @@ export default function YourPlaylistDisplay({ title, playlists }) {
     let [searchedPlaylist, setSearchedPlaylist] = useState('')
     let [filteredPlaylists, setFilteredPlaylists] = useState(playlists)
 
+    // Filter your playlists based on search input after each keystroke
     useEffect(() => {
         setFilteredPlaylists(playlists.filter(playlist => playlist.name.toLowerCase().includes(searchedPlaylist.toLowerCase())))
     }, [searchedPlaylist, playlists])
