@@ -57,17 +57,18 @@ export default function SelectSongsPage() {
     }
 
     function handleCheckSong(song, checked) {
+        const fullSong = songs.find(s => s.track.id === song.track.id);
         if (checked === true) {
             setCheckedSongs((currentSongs) => {
                 return [
                     ...currentSongs,
-                    song
-                ]
-            })
+                    fullSong
+                ];
+            });
         } else {
             setCheckedSongs(currentSongs => {
-                return currentSongs.filter(tempSong => tempSong.track.id !== song.track.id)
-            })
+                return currentSongs.filter(tempSong => tempSong.track.id !== song.track.id);
+            });
         }
     }
 
