@@ -8,6 +8,9 @@ export default function SelectPlaylistPage() {
     let [yourPlaylists, setYourPlaylists] = useState([])
     let [spotifysPlaylists, setSpotifysPlaylists] = useState([])
 
+    const clientId = import.meta.env.REACT_APP_SPOTIFY_CLIENT_ID
+
+    // Check if the user has been redirected from the Spotify login page
     useEffect(() => {
         if (!redirectHandled) {
             handleRedirect().then(() => {
@@ -19,6 +22,7 @@ export default function SelectPlaylistPage() {
         }
     }, [redirectHandled])
 
+    // Handle redirect from the Spotify login page
     async function handleRedirect() {
         const urlParams = new URLSearchParams(window.location.search)
         let code = urlParams.get('code')
@@ -30,7 +34,6 @@ export default function SelectPlaylistPage() {
             return
         }
 
-        const clientId = "c6d5e6e3440f4b4aa3e87e73b008f6ca"
         const redirectUri = 'http://localhost:5173/playlists'
           
         const payload = {
@@ -54,7 +57,6 @@ export default function SelectPlaylistPage() {
             const data = await response.json()
 
             if (response.ok) {
-                console.log('Access token: ', data.access_token)
                 localStorage.setItem('access_token', data.access_token)
             } else {
                 console.error('Error fetching access token: ', data)
@@ -64,6 +66,7 @@ export default function SelectPlaylistPage() {
         }
     }
 
+    // Retrieve current user's playlists from Spotify API
     async function getUserPlaylists() {
         const accessToken = localStorage.getItem('access_token')
         let allPlaylists = []
@@ -104,6 +107,7 @@ export default function SelectPlaylistPage() {
         console.log('All user playlists retrieved successfully')
     }
 
+    // Retrieve Spotify playlists from Spotify API based on search item
     async function getSpotifyPlaylists(searchItem) {
         let url = 'https://api.spotify.com/v1/search'
         const accessToken = localStorage.getItem('access_token')
@@ -132,7 +136,6 @@ export default function SelectPlaylistPage() {
 
             if (response.ok) {
                 console.log('Spotify playlists retrieved successfully')
-                console.log(data.playlists.items)
                 setSpotifysPlaylists([...data.playlists.items])
             } else {
                 console.error('Error retrieving spotify playlists', response)
