@@ -1,38 +1,45 @@
-import { useState, useEffect } from "react"
-import { useLocation } from "react-router-dom"
+import { useState, useEffect, useRef } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PlayPage() {
     const { state } = useLocation()
     const songs = state.songs
     const device = state.device
+    const navigate = useNavigate()
     let [minute, setMinute] = useState(1)
     let [timer, setTimer] = useState(60)
     let [currentSong, setCurrentSong] = useState(songs[minute])
+    let [isPlaying, setIsPlaying] = useState(true)
+    const intervalRef = useRef(null)
 
     useEffect(() => {
         setCurrentSong(songs[minute])
     }, [minute])
 
     useEffect(() => {
-        playSong(currentSong)
+        playSong(currentSong, (60 - timer) * 1000)
     }, [currentSong])
 
     useEffect(() => {
-        const id = setInterval(() => {
-            setTimer(prevTimer => {
-                if (prevTimer === 1) {
-                    setMinute(prevMinute => prevMinute + 1)
-                    return 60
-                }
-                return prevTimer - 1
-            })
-        }, 1000)
+        if (isPlaying) {
+            intervalRef.current = setInterval(() => {
+                setTimer(prevTimer => {
+                    if (prevTimer === 1) {
+                        setMinute(prevMinute => prevMinute + 1)
+                        return 60
+                    }
+                    return prevTimer - 1
+                })
+            }, 1000)
+        } else if (intervalRef.current) {
+            clearInterval(intervalRef.current)
+        }
 
-        return () => clearInterval(id)
-    }, [])
+        return () => clearInterval(intervalRef.current)
+    }, [isPlaying])
 
-    async function playSong(song) {
+    async function playSong(song, msIntoSong = 0) {
         const accessToken = localStorage.getItem('access_token')
 
         const url = `https://api.spotify.com/v1/me/player/play?device_id=${device}`
@@ -44,7 +51,7 @@ export default function PlayPage() {
             },
             body: JSON.stringify({
                 uris: [song.track.uri],
-                position_ms: 0
+                position_ms: msIntoSong
             })
         }
 
@@ -61,6 +68,44 @@ export default function PlayPage() {
         } catch (err) {
             console.error('Error sending request to play song: ', err)
         }
+    }
+
+    function pauseSong() {
+        const accessToken = localStorage.getItem('access_token')
+
+        const url = `https://api.spotify.com/v1/me/player/pause?device_id=${device}`
+
+        const payload = {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        }
+
+        fetch(url, payload)
+            .then(response => {
+                if (response.ok) {
+                    console.log('Paused song playback')
+                } else {
+                    console.error('Error pausing song', response)
+                }
+            })
+            .catch(err => console.error('Error sending request to pause song: ', err))
+    }
+
+    function pauseOrPlaySong() {
+        if (isPlaying) {
+            pauseSong()
+        } else {
+            playSong(currentSong, (60 - timer) * 1000)
+        }
+        setIsPlaying(prevIsPlaying => !prevIsPlaying)
+    }
+
+    function navigateToPage(page) {
+        pauseSong()
+        setIsPlaying(false)
+        navigate(page)
     }
 
     return (
@@ -86,6 +131,17 @@ export default function PlayPage() {
                     {currentSong.track.album.images && <img src={currentSong.track.album.images[1].url} alt="Current Song" className="mb-3" style={{ width: '200px', height: '200px' }} />}
                     <h3>{currentSong.track.name}</h3>
                     <h5>by: {currentSong.track.artists.map(artist => artist.name).join(', ')}</h5>
+                </div>
+            </div>
+            <div id="navigate-buttons" className="row mt-4">
+                <div className="col text-center">
+                    <button className="btn" onClick={() => navigateToPage('/')}>Return Home</button>
+                </div>
+                <div className="col text-center">
+                    <button className="btn" onClick={pauseOrPlaySong}>{isPlaying ? 'Pause' : 'Play'}</button>
+                </div>
+                <div className="col text-center">
+                    <button className="btn" onClick={() => navigateToPage('/playlists')}>Pick New Playlist</button>
                 </div>
             </div>
         </div>

@@ -24,6 +24,10 @@ h1, h2, h4, p, i {
     color: white;
 }
 
+#home-button-holder p {
+    color: #2C363F;
+}
+
 /* SELECT PLAYLIST PAGE */
 
 #your-playlist-box {
@@ -136,4 +140,19 @@ tr img {
     background-color: #2C363F;
     color: #F1BB87;
     border: 1px solid white;
+}
+
+#navigate-buttons {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+#navigate-buttons button {
+    background-color: #F1BB87;
+    color: #2C363F;
+}
+
+#navigate-buttons button:hover {
+    background-color: #E0A96D;
+    color: white;
 }
