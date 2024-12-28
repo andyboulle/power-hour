@@ -63,7 +63,6 @@ export default function PlayPage() {
         try {
             const response = await fetch(url, payload)
             const data = await response.json()
-            console.log(data)
 
             if (response.ok) {
                 console.log('Started song playback')

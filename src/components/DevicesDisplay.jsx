@@ -29,7 +29,6 @@ export default function DevicesDisplay({ handleDeviceSelection, handleStartPower
 
             if (response.ok) {
                 devices = [...data.devices]
-                console.log(devices)
             } else {
                 console.error('Error retrieving available devices', response)
             }

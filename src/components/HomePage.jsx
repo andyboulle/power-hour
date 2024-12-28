@@ -5,11 +5,6 @@ export function HomePage() {
     let [instructionsVisible, setInstructionsVisible] = useState(false)
     const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL
 
-    useEffect(() => {
-        console.log(`Base Url: ${baseUrl}`)
-        console.log(`Redirect URI: ${baseUrl}/playlists`)
-    }, [])
-
     function toggleInstructions() {
         setInstructionsVisible(!instructionsVisible)
     }
