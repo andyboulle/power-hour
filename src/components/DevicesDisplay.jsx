@@ -40,7 +40,7 @@ export default function DevicesDisplay({ handleDeviceSelection, handleStartPower
     }
 
     return (
-        <div className="card">
+        <div id="devices-box" className="card">
             <div className="card-body">
                 <h3>Available Devices:</h3>
                 <button className="btn btn-secondary mb-3" onClick={getAvailableDevices}>
@@ -60,7 +60,7 @@ export default function DevicesDisplay({ handleDeviceSelection, handleStartPower
                     </div>
                 ))}
                 {deviceWarningVisible && <p className="text-danger">A device must be selected. Open Spotify on one of your devices, start playing a song, and press the "Check for Available Devices" button. That device will show up and can then be selected.</p>}
-                <button className="btn btn-primary mt-3" onClick={handleStartPowerHour}>
+                <button id="start-button" className="btn mt-3" onClick={handleStartPowerHour}>
                     Start Power Hour
                 </button>
             </div>

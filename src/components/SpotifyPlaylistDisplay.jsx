@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import PlaylistRow from "./PlaylistRow"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SpotifyPlaylistDisplay({ title, playlists, getSearchResults }) {
     let [searchItem, setSearchItem] = useState('')
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        getSearchResults(searchItem)
+    }
+
     return (
-        <div className="card p-4">
+        <div id="spotifys-playlist-box" className="card p-4">
             <h2 className="text-center">{title}</h2>
-            <form className="mb-3 d-flex">
+            <form className="mb-3 d-flex" onSubmit={handleSubmit}>
                 <input 
                     type="text" 
                     className="form-control me-2"
@@ -16,10 +21,10 @@ export default function SpotifyPlaylistDisplay({ title, playlists, getSearchResu
                     value={searchItem}
                     onChange={e => setSearchItem(e.target.value)}
                 />
-                <button className="btn btn-primary" type="button" onClick={() => getSearchResults(searchItem)}>Search</button>
+                <button id="spotify-search-button" className="btn" type="button" onClick={() => getSearchResults(searchItem)}>Search</button>
             </form>
             <ul className="list-group" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
-                <li className="list-group-item d-flex justify-content-between">
+                <li className="list-group-item d-flex justify-content-between li-headers">
                     <div className="row w-100">
                         <div className="col-2">Image</div>
                         <div className="col-4">Name</div>

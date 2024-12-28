@@ -11,7 +11,7 @@ export default function YourPlaylistDisplay({ title, playlists }) {
     }, [searchedPlaylist, playlists])
 
     return (
-        <div className="card p-4">
+        <div id="your-playlist-box" className="card p-4">
             <h2 className="text-center">{title}</h2>
             <form className="mb-3">
                 <input 
@@ -22,8 +22,8 @@ export default function YourPlaylistDisplay({ title, playlists }) {
                     onChange={e => setSearchedPlaylist(e.target.value)}
                 />
             </form>
-            <ul className="list-group" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
-                <li className="list-group-item d-flex justify-content-between">
+            <ul id="your-playlist-list" className="list-group" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
+                <li className="list-group-item d-flex justify-content-between li-headers">
                     <div className="row w-100">
                         <div className="col-2">Image</div>
                         <div className="col-4">Name</div>

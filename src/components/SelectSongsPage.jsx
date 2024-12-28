@@ -114,12 +114,14 @@ export default function SelectSongsPage() {
                 </div>
             </div>
             <p>Select any songs you want to guarantee will show up during the power hour. The rest will be randomly selected to fill out the 60 minutes.</p>
-            <SongsDisplay songs={songs} handleCheckSong={handleCheckSong} />
-            <DevicesDisplay 
-                handleDeviceSelection={handleDeviceSelection} 
-                handleStartPowerHour={handleStartPowerHour} 
-                deviceWarningVisible={deviceWarningVisible} 
-            />
+            <div id="select-songs-box" className="card p-4">
+                <SongsDisplay songs={songs} handleCheckSong={handleCheckSong} />
+                <DevicesDisplay 
+                    handleDeviceSelection={handleDeviceSelection} 
+                    handleStartPowerHour={handleStartPowerHour} 
+                    deviceWarningVisible={deviceWarningVisible} 
+                />
+            </div>
         </div>
     )
 }

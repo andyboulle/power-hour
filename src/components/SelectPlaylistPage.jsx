@@ -10,11 +10,14 @@ export default function SelectPlaylistPage() {
 
     useEffect(() => {
         if (!redirectHandled) {
-            handleRedirect()
-            setRedirectHandled(true)
+            handleRedirect().then(() => {
+                getUserPlaylists()
+                setRedirectHandled(true)
+            })
+        } else {
+            getUserPlaylists()
         }
-        getUserPlaylists()
-    }, [])
+    }, [redirectHandled])
 
     async function handleRedirect() {
         const urlParams = new URLSearchParams(window.location.search)

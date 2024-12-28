@@ -1,10 +1,9 @@
-import { useState } from "react"
 import SongRow from "./SongRow"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SongsDisplay({ songs, handleCheckSong }) {
     return (
-        <div className="card mb-4">
+        <div id="songs-box" className="card mb-4">
             <div className="card-body">
                 <div className="table-responsive" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
                     <table className="table table-hover">

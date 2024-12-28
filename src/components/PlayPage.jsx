@@ -73,7 +73,7 @@ export default function PlayPage() {
                     <h4>{state.playlistInfo.playlistOwner}</h4>
                 </div>
             </div>
-            <div className="card p-4">
+            <div id="play-box" className="card p-4">
                 <div className="d-flex justify-content-between mb-4">
                     <div>
                         <h4>Timer: {timer}</h4>

@@ -64,8 +64,8 @@ export function HomePage() {
         <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
             <h1 className="text-center">Power Hour</h1>
             <i className="fa-solid fa-beer-mug-empty fa-3x mb-4"></i>
-            <div className="card p-4 text-center" style={{ width: '300px' }}>
-                <button className="btn btn-primary mb-2" onClick={requestUserAuthorization}>
+            <div id="home-button-holder" className="card p-4 text-center" style={{ width: '300px' }}>
+                <button id="spotify-login-button" className="btn mb-2" onClick={requestUserAuthorization}>
                     Log In with Spotify
                 </button>
                 <button className="btn btn-secondary mb-2" onClick={toggleInstructions}>

@@ -1,0 +1,139 @@
+/* ALL PAGES */
+
+body {
+    background-color: #2C363F;
+}
+
+h1, h2, h4, p, i {
+    color: #F1BB87;
+}
+
+/* HOME PAGE */
+
+#home-button-holder {
+    background-color: #F1BB87;
+}
+
+#spotify-login-button {
+    background-color: #57C284;
+    color: white;
+}
+
+#spotify-login-button:hover {
+    background-color: #469b6a;
+    color: white;
+}
+
+/* SELECT PLAYLIST PAGE */
+
+#your-playlist-box {
+    background-color: #2C363F;
+    color: #F1BB87;
+    border: 1px solid white;
+}
+
+#spotifys-playlist-box {
+    background-color: #2C363F;
+    color: #F1BB87;
+    border: 1px solid white;
+}
+
+#spotify-search-button {
+    background-color: #57C284;
+    color: white;
+}
+
+#spotify-search-button:hover {
+    background-color: #469b6a;
+    color: white;
+}
+
+.list-group-item {
+    background-color: #F1BB87;
+    color: #2C363F;
+    border: 1px solid #2C363F;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #E0A96D;
+}
+
+.list-group-item img {
+    border-radius: 4px;
+}
+
+.li-headers {
+    font-weight: bold;
+}
+
+/* SELECT SONGS PAGE */
+
+#select-songs-box {
+    background-color: #2C363F;
+    border: 1px solid white;
+}
+
+#songs-box {
+    background-color: #2C363F;
+    border: none;
+}
+
+#songs-box .card-body {
+    padding: 0px;
+}
+
+tr {
+    background-color: #F1BB87;
+    color: #2C363F;
+    border: 1px solid #2C363F;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+tr:hover {
+    background-color: #E0A96D;
+}
+
+tr img {
+    border-radius: 4px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #E0A96D;
+}
+
+.table thead th {
+    background-color: #F1BB87;
+    color: #2C363F;
+    border-bottom: 2px solid #2C363F;
+}
+
+.table tbody td {
+    border-top: 1px solid #2C363F;
+    background-color: #F1BB87;
+}
+
+#devices-box {
+    background-color: #F1BB87;
+    color: #2C363F;
+}
+
+#start-button {
+    background-color: #57C284;
+    color: white;
+}
+
+#start-button:hover {
+    background-color: #469b6a;
+    color: white;
+}
+
+/* PLAY PAGE */
+
+#play-box {
+    background-color: #2C363F;
+    color: #F1BB87;
+    border: 1px solid white;
+}
