@@ -1,3 +1,12 @@
+/* 
+    COLOR SCHEME:
+    - Background Color --> #545677: Dark Blue
+    - Main Content Color --> #DED9E2: Light Purple
+    - Main Contents Hover --> #c8c3cb: Darker Light Purple
+    - Spotify Buttons --> #57C284: Green
+    - Spotify Buttons Hover --> #469b6a: Dark Green
+*/
+
 /* ALL PAGES */
 
 body {
@@ -33,13 +42,13 @@ h1, h2, h4, p, i {
 #your-playlist-box {
     background-color: #545677;
     color: #DED9E2;
-    border: 1px solid white;
+    border: none
 }
 
 #spotifys-playlist-box {
     background-color: #545677;
     color: #DED9E2;
-    border: 1px solid white;
+    border: none;
 }
 
 #spotify-search-button {
@@ -76,7 +85,7 @@ h1, h2, h4, p, i {
 
 #select-songs-box {
     background-color: #545677;
-    border: 1px solid white;
+    border: none;
 }
 
 #songs-box {
