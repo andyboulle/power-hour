@@ -80,6 +80,11 @@ export function HomePage() {
                     </p>
                 }
             </div>
+            <br />
+            <div className="d-flex align-items-center">
+                <p className="mb-0">Presented by</p>
+                <img src="/white_boolhead_logo.png" alt="Logo" style={{ width: '100px', height: 'auto', marginLeft: '10px' }} />
+            </div>
         </div>
     )
 }
