@@ -8,7 +8,8 @@ export default function SelectPlaylistPage() {
     let [yourPlaylists, setYourPlaylists] = useState([])
     let [spotifysPlaylists, setSpotifysPlaylists] = useState([])
 
-    const clientId = import.meta.env.REACT_APP_SPOTIFY_CLIENT_ID
+    const clientId = import.meta.env.VITE_REACT_APP_SPOTIFY_CLIENT_ID
+    const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL
 
     // Check if the user has been redirected from the Spotify login page
     useEffect(() => {
@@ -34,7 +35,7 @@ export default function SelectPlaylistPage() {
             return
         }
 
-        const redirectUri = 'http://localhost:5173/playlists'
+        const redirectUri = `${baseUrl}/playlists`
           
         const payload = {
             method: 'POST',

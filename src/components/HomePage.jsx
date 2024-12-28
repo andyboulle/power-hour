@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function HomePage() {
     let [instructionsVisible, setInstructionsVisible] = useState(false)
+    const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL
 
     function toggleInstructions() {
         setInstructionsVisible(!instructionsVisible)
@@ -41,7 +42,7 @@ export function HomePage() {
 
         // Request User Authorization
         const clientId = "c6d5e6e3440f4b4aa3e87e73b008f6ca"
-        const redirectUri = 'http://localhost:5173/playlists'
+        const redirectUri = `${baseUrl}/playlists`
 
         const scope = 'user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private'
         const authUrl = new URL("https://accounts.spotify.com/authorize")
