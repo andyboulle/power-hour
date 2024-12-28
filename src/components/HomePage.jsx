@@ -5,6 +5,11 @@ export function HomePage() {
     let [instructionsVisible, setInstructionsVisible] = useState(false)
     const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL
 
+    useEffect(() => {
+        console.log(`Base Url: ${baseUrl}`)
+        console.log(`Redirect URI: ${baseUrl}/playlists`)
+    }, [])
+
     function toggleInstructions() {
         setInstructionsVisible(!instructionsVisible)
     }
@@ -20,7 +25,6 @@ export function HomePage() {
         }
           
         const codeVerifier  = generateRandomString(64);
-        console.log(`code verifier: ${codeVerifier}`)
 
         // Get Code Challenge
         const sha256 = async (plain) => {
@@ -38,7 +42,6 @@ export function HomePage() {
 
         const hashed = await sha256(codeVerifier)
         const codeChallenge = base64encode(hashed)
-        console.log(`code challenge: ${codeChallenge}`)
 
         // Request User Authorization
         const clientId = "c6d5e6e3440f4b4aa3e87e73b008f6ca"
