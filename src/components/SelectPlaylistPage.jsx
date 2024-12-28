@@ -11,16 +11,14 @@ export default function SelectPlaylistPage() {
     const clientId = import.meta.env.VITE_REACT_APP_SPOTIFY_CLIENT_ID
     const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL
 
+    useEffect(() => {
+        handleRedirect()
+        setRedirectHandled(true)
+    })
+
     // Check if the user has been redirected from the Spotify login page
     useEffect(() => {
-        if (!redirectHandled) {
-            handleRedirect().then(() => {
-                getUserPlaylists()
-                setRedirectHandled(true)
-            })
-        } else {
-            getUserPlaylists()
-        }
+        getUserPlaylists()
     }, [redirectHandled])
 
     // Handle redirect from the Spotify login page
