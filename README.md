@@ -28,11 +28,12 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     npm install
     ```
-4. In `.env`, set `REACT_APP_SPOTIFY_CLIENT_ID` to the client ID that was created in the prerequisites for the Spotify API
+4. In `.env`, set `VITE_REACT_APP_SPOTIFY_CLIENT_ID` to the client ID that was created in the prerequisites for the Spotify API. Set the `VITE_REACT_APP_BASE_URL` to the base url of your project. (For local development you should set this to `http://localhost:5173`)
     
     Example:
     ```bash
-    REACT_APP_SPOTIFY_CLIENT_ID="INSERT CLIENT ID"
+    VITE_REACT_APP_SPOTIFY_CLIENT_ID="sdhgv16tg3hkb71293gk1898o"
+    VITE_REACT_APP_BASE_URL="http://localhost:5173
     ```
 
 ### Execution
