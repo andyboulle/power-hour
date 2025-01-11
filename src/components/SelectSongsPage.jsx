@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import SongsDisplay from "./SongsDisplay"
 import DevicesDisplay from "./DevicesDisplay"
 import { useLocation, useNavigate } from "react-router-dom"
+import { refreshAccessToken } from '../auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SelectSongsPage() {
@@ -15,6 +16,15 @@ export default function SelectSongsPage() {
     useEffect(() => {
         getSongsFromPlaylist()
     }, [])
+
+    // Set up a timer to refresh the access token every hour
+    useEffect(() => {
+        const interval = setInterval(() => {
+            refreshAccessToken();
+        }, 3600 * 1000); // Refresh the token every hour
+
+        return () => clearInterval(interval); // Cleanup the interval on component unmount
+    }, []);
 
     async function getSongsFromPlaylist() {
         const accessToken = localStorage.getItem('access_token')

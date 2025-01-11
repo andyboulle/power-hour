@@ -62,7 +62,7 @@ h1, h2, h4, p, i {
 }
 
 .list-group-item {
-    background-color: #DED9E2;
+    background-color: white;
     color: #545677;
     border: 1px solid #545677;
     padding: 10px 15px;
@@ -118,14 +118,14 @@ tr img {
 }
 
 .table thead th {
-    background-color: #DED9E2;
+    background-color: white;
     color: #545677;
     border-bottom: 2px solid #545677;
 }
 
 .table tbody td {
     border-top: 1px solid #545677;
-    background-color: #DED9E2;
+    background-color: white;
     color: #545677;
 }
 

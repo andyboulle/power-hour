@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { refreshAccessToken } from "../auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PlayPage() {
@@ -42,6 +43,15 @@ export default function PlayPage() {
 
         return () => clearInterval(intervalRef.current)
     }, [isPlaying])
+
+    // Set up a timer to refresh the access token every hour
+    useEffect(() => {
+        const interval = setInterval(() => {
+            refreshAccessToken();
+        }, 3600 * 1000); // Refresh the token every hour
+
+        return () => clearInterval(interval); // Cleanup the interval on component unmount
+    }, []);
 
     // Play the song at the given time into the song using the Spotify API
     async function playSong(song, msIntoSong = 0) {
