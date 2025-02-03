@@ -48,10 +48,10 @@ export function HomePage() {
         const codeChallenge = base64encode(hashed);
 
         // Request User Authorization
-        const clientId = "c6d5e6e3440f4b4aa3e87e73b008f6ca";
+        const clientId = import.meta.env.VITE_REACT_APP_SPOTIFY_CLIENT_ID;
         const redirectUri = `${baseUrl}/playlists`;
 
-        const scope = 'user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private offline_access';
+        const scope = 'user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private';
         const authUrl = new URL("https://accounts.spotify.com/authorize");
 
         window.localStorage.setItem('code_verifier', codeVerifier);
